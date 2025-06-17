@@ -1,14 +1,14 @@
 from flask import Flask, request, jsonify
 import mysql.connector
+import os
 
 app = Flask(__name__)
 
-# Ganti ini dengan info database kamu
 db_config = {
-    'host': 'sql12.freesqldatabase.com',
-    'user': 'sql12785001',
-    'password': 'vbRCZFn5e6',
-    'database': 'sql12785001'
+    'host': os.getenv('DB_HOST'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASS'),
+    'database': os.getenv('DB_NAME')
 }
 
 @app.route('/api/gps-data', methods=['POST'])
